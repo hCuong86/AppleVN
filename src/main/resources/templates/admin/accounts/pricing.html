@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+</head>
+
+<body>
+    <!-- Pricing section-->
+    <section class="bg-light py-5" layout:fragment="content">
+        <div class="container px-5 my-5">
+            <div class="text-center mb-5">
+                <h1 class="fw-bolder">Sản Phẩm</h1>
+                <p class="lead fw-normal text-muted mb-0">Giá tốt nhất thị trường</p>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <!-- Pricing card free-->
+
+                <!-- Pricing card pro-->
+                <div class="col-lg-6 col-xl-4 mb-5" th:each="category : ${products}">
+                    <div class="card mb-5 mb-xl-0">
+                        <div class="card-body p-5">
+                            <div class="small text-uppercase fw-bold">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                [[${category.name}]]
+                            </div>
+                            <div class="mb-3">
+                                <span class="display-4 fw-bold">$9</span>
+                                <span class="text-muted">/ mo.</span>
+                            </div>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2">
+                                    <i class="bi bi-check text-primary"></i>
+                                    <strong>5 users</strong>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check text-primary"></i>
+                                    5GB storage
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check text-primary"></i>
+                                    Unlimited public projects
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check text-primary"></i>
+                                    Community access
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check text-primary"></i>
+                                    Unlimited private projects
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check text-primary"></i>
+                                    Dedicated support
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check text-primary"></i>
+                                    Free linked domain
+                                </li>
+                                <li class="text-muted">
+                                    <i class="bi bi-x"></i>
+                                    Monthly status reports
+                                </li>
+                            </ul>
+                            <div class="d-grid"><a class="btn btn-primary" href="#!">Choose plan</a></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pricing card enterprise-->
+
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

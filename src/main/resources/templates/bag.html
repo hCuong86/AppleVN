@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+</head>
+
+<body>
+    <!-- Pricing section-->
+    <section layout:fragment="content">
+        <section class=" bg-light py-5" th:object="${toCart}">
+            <p class="lead fw-normal text-dark mb-5 text-center">Xin lưu ý rằng chúng tôi không chấp nhận đổi trả đối với các đơn hàng trực tuyến.</p>
+            <div class="container px-3 my-3">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-8">
+                        <div class="text-center">
+                            <h2 class="fw-bolder">Tổng giá trị giỏ hàng của bạn là <span th:text="*{getUnitPrice() +'đ'}"></span></h2>
+                            <p class="lead fw-normal text-muted mb-5">Miễn phí vận chuyển với mọi đơn hàng</p>
+                            <div class="d-grid gap-2 col-4 mx-auto" >
+                            <a class="btn btn-primary" href="#" role="button">Thanh toán</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row gx-5" >
+                    <div class="col-lg-4 mb-5" th:each="item : ${products}">
+                        <div class="card h-100 shadow border-0">
+
+                            <img class="card-img-top"  th:src="${item.image!= null? '/images/' + item.image : '/images/no-photo.jpg'}"
+                            alt="none" width="50%" />
+                            <div class="card-body p-4">
+                                <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
+                                <a class="text-decoration-none link-dark stretched-link" href="#!">
+                                    <h5 class="card-title mb-3" th:text="${item.name}">Tên sản phẩm</h5>
+                                </a>
+                                <p class="card-text mb-0" th:text="${item.description}">Ghi chú</p>
+                            </div>
+                            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                <div class="d-flex align-items-end justify-content-between">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Call to action-->
+            </div>
+
+        </section>
+        <div class="container px-3 my-5">
+            <div class="container">
+                <div class="row" th:each="item : ${cart}">
+                  <div class="col-sm-3 text-center justify-content-center">
+                    <img th:src="${item.image!= null? '/images/' + item.image : '/images/no-photo.jpg'}" width="200" height="200" alt="">
+                  </div>
+                  <div class="col-sm-9">
+                    <div class="row">
+                      <div class="col-4 col-sm-6">
+                       <h4 class="fw-bolder float-left mb-3" th:text="${item.product.name}" >iPhone 14 Pro Max - Tím Lịm</h4>
+                       <p class="lead fw-normal text-dark mb-3" >Thanh toán 1.67% lãi trong 24 tháng <br>
+                        sau khi thanh toán lần đầu 20% là 6.300.000đ.</p>
+                      </div>
+                      <div class="col-4 col-sm-2">
+                        <div class=""><label for="" th:text="${item.quantity}" >1</label>
+                            <select class="custom-select" name="" id="">
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                                <option value="">5</option>
+                                <option value="">6</option>
+                                <option value="">7</option>
+                                <option value="">8</option>
+                                <option value="">9</option>
+                                <option value="">10+</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="col-4 col-sm-4 text-right">
+                       <h4 class="text-right" th:text="${item.quantity * item.product.unitPrice}" >31.499.000đ</h4>
+                       </div>
+                       <hr>
+                       <div class="col-4 col-sm-6 my-3">
+                        <!-- Status -->
+                        <p class="lead fw-normal text-dark mb-3" ><i class="bi bi-box"></i> Còn hàng</p>
+                        <p class="lead fw-small text-dark mb-3" >Tuỳ chọn giao hàng:
+                         <a class="text-decoration-none" href="">Chọn quận</a></p>
+                       </div>
+                       <div class="col-4 col-sm-6 my-3 text-right">
+                        <!-- Status -->
+                        <p class="lead fw-normal text-dark mb-3" ></p>
+                        <p class="lead fw-small text-dark mb-3" >
+                         <a class=" text-decoration-none" href="">Xoá</a></p>
+                       </div>
+
+                    </div>
+
+                  </div>
+                  <hr>
+
+                </div>
+               <!-- Thanh toan -->
+                <div class="row">
+
+                    <div class="col-sm-3 text-center justify-content-center">
+                    </div>
+                    <div class="col-sm-9">
+                      <div class="row">
+                        <div class="col-4 col-sm-6">
+                         <p class="lead fw-normal text-dark mb-3" >Tổng tiền</p>
+                         <p class="lead fw-normal text-dark my-3" >Vận chuyển</p>
+                        </div>
+
+                        <div class="col-4 col-sm-6">
+                         <h4 class="float-right" >31.499.000đ</h4>
+                         <p class="lead text-dark my-3" >MIỄN PHÍ</p>
+                         </div>
+                         <hr>
+                         <div class="col-4 col-sm-6 my-3">
+                            <h4 class="fw-bolder float-left mb-3" >Tổng tiền cần thanh toán: </h4>
+
+                         </div>
+                         <div class="col-4 col-sm-6 my-3 mb-lg-5 align-right justify-content-center">
+                            <div class="text-right" > <h4 class="" >31.499.000đ</h4> </div>
+
+                            <div class="my-3 text-center"> <a type="button" class="btn btn-primary btn-lg d-flex text-center">Thanh Toán</a></div>
+
+
+                           </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+              </div>
+        </div>
+    </section>
+</body>
+
+</html>

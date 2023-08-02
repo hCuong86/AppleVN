@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/dashboardLayout.html}">
+
+<head>
+
+</head>
+
+<body>
+    <section layout:fragment="content">
+
+        <div class="container px-5 my-5">
+            <form th:action="@{/admin/accounts/saveOrUpdate}" method="post" th:object="${account}">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 th:if="${account.isEdit? 'Edit Account' : 'Add New Account'}">Add New Account </h2>
+                    </div>
+                    <div class="card-body">
+                        <input type="hidden" th:field="*{isEdit}">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" class="form-control" th:field="*{username}"
+                                placeholder="Username" aria-describedby="usernameHid">
+                            <small th:if="${#fields.hasErrors('username')}" id="usernameHid" class="text-muted">Username phải từ 6 ký tự trở lên</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control"
+                                th:field="*{password}" placeholder="Password" aria-describedby="passwordHid">
+                            <small th:if="${#fields.hasErrors('password')}" id="passwordHid" class="text-muted">Mật khẩu phải từ 6 ký tự trở lên</small>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                        <a th:href="@{/admin/accounts}" class="btn btn-success"><i class="fas fa-list"></i> List
+                            Account</a>
+                        <button class="btn btn-primary"><i class="fas fa-save"></i>
+                            <span th:if="${account.isEdit}">Update</span>
+                            <span th:if="${!account.isEdit}">Save</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </section>
+    </main>
+</body>
+
+</html>

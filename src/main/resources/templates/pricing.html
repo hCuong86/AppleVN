@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+</head>
+
+<body>
+    <!-- Pricing section-->
+    <section class="bg-light py-5" layout:fragment="content">
+        <section class="py-5">
+            <div class="container px-5 my-5">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="text-center">
+                            <h2 class="fw-bolder">Sản phẩm</h2>
+                            <p class="lead fw-normal text-muted mb-5"></p>
+                        </div>
+                    </div>
+                </div>
+                <form th:action="@{'/add-to-cart'}" method="post">
+
+                    <!-- <div class="row gx-5" >
+                        <div class="col-lg-4 mb-5 " style="height: 600px;" th:each="item : ${products}">
+                            <div class="card h-100 shadow border-0">
+                        
+                                <img class="card-img-top" style="height: 50%; object-fit: contain; padding-top: 1rem;"  th:src="${item.image!= null? '/images/' + item.image : '/images/no-photo.jpg'}"
+                                alt="none" />
+                                <div class="card-body p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
+                                    <a class="text-decoration-none link-dark stretched-link abc" href="#!">
+                                        <h5 class="card-title mb-3" th:text="${item.name}">Tên sản phẩm</h5>
+                                    </a>
+                                    <p class="card-text mb-0" th:text="${item.description}">Ghi chú</p>
+                                </div>
+                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                    <div class="d-flex align-items-end justify-content-between">
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+                <div class="row gx-5" >
+                    <div class="col-lg-4 mb-5" th:each="item : ${products}">
+                        <div class="card h-100 shadow border-0">
+                            <img class="card-img-top" style="height: 50%; object-fit: contain; padding-top: 1rem;"  th:src="${item.image!= null? '/images/' + item.image : '/images/no-photo.jpg'}"
+                            alt="none" />
+                            <div class="card-body p-4">
+                                <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
+                                <a class="text-decoration-none link-dark" href="#" >
+                                    <h5 class="card-title mb-3" th:text="${item.name}">Tên sản phẩm</h5>
+                                </a>
+                                <p class="card-text mb-0" th:text="${item.description}">Ghi chú</p>
+                            </div>
+                            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                <div class="d-flex text-center justify-content-center">
+
+                                    <input type="submit" th:formaction="@{'/add-to-cart/' + ${item.productId}}" value="add to cart">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+                <!-- Call to action-->
+                <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+                    <div
+                        class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+                        <div class="mb-4 mb-xl-0">
+                            <div class="fs-3 fw-bold text-white">Cần sản phẩm mới, đừng ngại liên hệ.</div>
+                            <div class="text-white-50">Đăng ký để nhận những thông báo mới nhất về chúng tôi.</div>
+                        </div>
+                        <div class="ms-xl-4">
+                            <div class="input-group mb-2">
+                                <input class="form-control" type="text" placeholder="Email address..."
+                                    aria-label="Email address..." aria-describedby="button-newsletter" />
+                                <button class="btn btn-outline-light" id="button-newsletter" type="button">Send</button>
+                            </div>
+                            <div class="small text-white-50">Bảo mật thông tin tuyệt đối.
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </section>
+</body>
+
+</html>
